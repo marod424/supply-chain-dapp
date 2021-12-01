@@ -40,11 +40,11 @@ contract SupplyChain is
         string productNotes;
         uint productPrice;
         address ownerID;
-        address originProducerID;
-        string originProducerName;
-        string originProducerInformation;
-        string originProducerLatitude;
-        string originProducerLongitude;
+        address producerID;
+        string producerName;
+        string producerInformation;
+        string producerLatitude;
+        string producerLongitude;
         address distributorID;
         address retailerID;
         address consumerID;
@@ -129,11 +129,11 @@ contract SupplyChain is
 
     function produceItem(
         uint _upc, 
-        address _originProducerID, 
-        string memory _originProducerName, 
-        string memory _originProducerInformation, 
-        string memory _originProducerLatitude, 
-        string memory _originProducerLongitude, 
+        address _producerID, 
+        string memory _producerName, 
+        string memory _producerInformation, 
+        string memory _producerLatitude, 
+        string memory _producerLongitude, 
         string memory _productNotes
     ) public onlyProducer {
         items[_upc] = Item({
@@ -142,12 +142,12 @@ contract SupplyChain is
             productID: sku + _upc,
             productNotes: _productNotes,
             productPrice: 0,
-            ownerID: _originProducerID,
-            originProducerID: _originProducerID,
-            originProducerName: _originProducerName,
-            originProducerInformation: _originProducerInformation,
-            originProducerLatitude: _originProducerLatitude,
-            originProducerLongitude: _originProducerLongitude,
+            ownerID: _producerID,
+            producerID: _producerID,
+            producerName: _producerName,
+            producerInformation: _producerInformation,
+            producerLatitude: _producerLatitude,
+            producerLongitude: _producerLongitude,
             distributorID: address(0),
             retailerID: address(0),
             consumerID: address(0),
@@ -169,11 +169,8 @@ contract SupplyChain is
     }
 
     function sellItem(uint _upc, uint _price) public packed(_upc) onlyProducer {
-        Item memory targetItem = items[_upc];
-
-        targetItem.productPrice = _price;
-        targetItem.itemState = State.ForSale;
-
+        items[_upc].productPrice = _price;
+        items[_upc].itemState = State.ForSale;
         emit ForSale(_upc);
     }
 
@@ -185,13 +182,11 @@ contract SupplyChain is
         checkValue(_upc)
         onlyDistributor
     {
-        Item memory targetItem = items[_upc];
+        items[_upc].ownerID = msg.sender;
+        items[_upc].distributorID = msg.sender;
+        items[_upc].itemState = State.Sold;
 
-        targetItem.ownerID = msg.sender;
-        targetItem.distributorID = msg.sender;
-        targetItem.itemState = State.Sold;
-
-        payable(targetItem.originProducerID).transfer(targetItem.productPrice);
+        payable(items[_upc].producerID).transfer(items[_upc].productPrice);
 
         emit Sold(_upc);
     }
@@ -202,22 +197,16 @@ contract SupplyChain is
     }
 
     function receiveItem(uint _upc) public shipped(_upc) onlyRetailer {
-        Item memory targetItem = items[_upc];
-
-        targetItem.ownerID = msg.sender;
-        targetItem.retailerID = msg.sender;
-        targetItem.itemState = State.Received;
-
+        items[_upc].ownerID = msg.sender;
+        items[_upc].retailerID = msg.sender;
+        items[_upc].itemState = State.Received;
         emit Received(_upc);
     }
 
     function purchaseItem(uint _upc) public received(_upc) onlyConsumer {
-        Item memory targetItem = items[_upc];
-        
-        targetItem.ownerID = msg.sender;
-        targetItem.consumerID = msg.sender;
-        targetItem.itemState = State.Purchased;
-
+        items[_upc].ownerID = msg.sender;
+        items[_upc].consumerID = msg.sender;
+        items[_upc].itemState = State.Purchased;
         emit Purchased(_upc);
     }
 
@@ -228,11 +217,11 @@ contract SupplyChain is
             uint itemSKU,
             uint itemUPC,
             address ownerID,
-            address originProducerID,
-            string memory originProducerName,
-            string memory originProducerInformation,
-            string memory originProducerLatitude,
-            string memory originProducerLongitude
+            address producerID,
+            string memory producerName,
+            string memory producerInformation,
+            string memory producerLatitude,
+            string memory producerLongitude
         ) 
     {
         Item memory item = items[_upc];
@@ -240,11 +229,11 @@ contract SupplyChain is
             item.sku,
             item.upc,
             item.ownerID,
-            item.originProducerID,
-            item.originProducerName,
-            item.originProducerInformation,
-            item.originProducerLatitude,
-            item.originProducerLongitude
+            item.producerID,
+            item.producerName,
+            item.producerInformation,
+            item.producerLatitude,
+            item.producerLongitude
         );
     }
 
