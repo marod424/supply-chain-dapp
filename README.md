@@ -19,28 +19,52 @@ This repository containts an Ethereum DApp that demonstrates a generic Supply Ch
  
  For simplicity, *Retailers* and *Consumers* do not transfer any funds in the process. We can think of a *Distributor* as a great benefactor to our *Retailers* and *Consumers*.
 
-## UML (TODO)
+## UML
 
 ### Activity Diagram
 
 * **Actors & Interactions**
 * Represents the flow from one activity to another in the system; captures dynamic behavior of the system.
 
+<br>
+
 ![Acitivty Diagram](/uml/activity-diagram.svg)
+
+<br>
 
 ### Sequence Diagram 
 
 * **Functions**
 * Represents interaction between objects in the order in which they take place.
 
+<br>
+
+![Sequence Diagram](/uml/sequence-diagram.svg)
+
+<br>
+
+
 ### State Diagram 
 
 * **Enum of states**
 * Shows how an object moves through various states.
 
+<br>
+
+![State Diagram](/uml/state-diagram.svg)
+
+<br>
+
+
 ### Data Model Diagram
 
 * **Class diagram for smart contracts**
+
+<br>
+
+![Data Model Diagram](/uml/data-model-diagram.svg)
+
+<br>
 
 ## Libraries
 
