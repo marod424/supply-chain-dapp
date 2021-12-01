@@ -16,7 +16,7 @@
         <p style="text-align: center;">Prove the authenticity of trade using the Ethereum blockchain.</p>
     </div>
 
-    <div id="ftc-harvest">
+    <div id="ftc-produce">
         <h2>Product Overview</h2>
         <div class="form-group">
             SKU
@@ -36,26 +36,26 @@
 
         <div class=form-break></div>
 
-        <h2>Farm Details</h2>
+        <h2>Producer Details</h2>
         <div class="form-group">
-            Farmer ID
+            Producer ID
             <br>
             <input type="text" id="originFarmerID" name="originFarmerID" value="0x99c289eb2aacec289631a5ddf62cf27a63d4494f"
                 size="50"><br>
-            Farm Name
+            Producer Name
             <br>
-            <input type="text" id="originFarmName" name="originFarmName" value="John Doe"><br>
-            Farm Information
+            <input type="text" id="producerName" name="producerName" value="John Doe"><br>
+            Producer Information
             <br>
-            <input type="text" id="originFarmInformation" name="originFarmInformation" value="Yarra Valley"><br>
-            Farm Latitude
+            <input type="text" id="producerInformation" name="producerInformation" value="Yarra Valley"><br>
+            Producer Latitude
             <br>
-            <input type="text" id="originFarmLatitude" name="originFarmLatitude" value="-38.239770"><br>
-            Farm Longitude
+            <input type="text" id="producerLatitude" name="producerLatitude" value="-38.239770"><br>
+            Producer Longitude
             <br>
-            <input type="text" id="originFarmLongitude" name="originFarmLongitude" value="144.341490"><br>
+            <input type="text" id="producerLongitude" name="producerLongitude" value="144.341490"><br>
             <br>
-            <button class="btn-harvest" id="button" type="button" data-id="1">Harvest</button>
+            <button class="btn-produce" id="button" type="button" data-id="1">Produce</button>
             <button class="btn-process" id="button" type="button" data-id="2">Process</button>
             <button class="btn-pack" id="button" type="button" data-id="3">Pack</button>
             <button class="btn-forsale" id="button" type="button" data-id="4">ForSale</button>
@@ -67,7 +67,7 @@
         <div class="form-group">
             Product Notes
             <br>
-            <input type="text" id="productNotes" name="productNotes" value="Best beans for Espresso" size="60"><br>
+            <input type="text" id="productNotes" name="productNotes" value="Humane, Natural, and Organic" size="60"><br>
             Product Price
             <br>
             <input type="number" id="productPrice" name="productPrice" value=1>ETH<br>
@@ -80,7 +80,7 @@
             <br>
             <input type="text" id="retailerID" name="retailerID" value="0x0fb2bfefd526966c87efa19f6693d50971763fc2"
                 size="50"><br>
-            Distributor ID
+            Consumer ID
             <br>
             <input type="text" id="consumerID" name="consumerID" value="0x5d777e9127b28fb119e81a6304278a0a21bef1c4"
                 size="50"><br>
@@ -104,7 +104,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- <script src="js/web3.min.js"></script> -->
+    <script src="js/web3.min.js"></script>
     <script src="js/truffle-contract.js"></script>
     <script src="js/app.js"></script>
 </body>
