@@ -1,5 +1,15 @@
 # Supply Chain DApp
 
+## Developer Quickstart
+
+1. Clone repository: ``git clone https://github.com/marod424/supply-chain-dapp.git``
+2. Install dependencies: ``cd supply-chain-dapp && npm install``
+3. Run blockchain: ``truffle develop``
+4. Compile contracts: ``truffle > compile``
+5. Migrate contracts: ``truffle > migrate --reset``
+6. Test contracts: ``truffle > test``
+7. Launch the dapp (in separate terminal window): ``npm run dev``
+
 ## Rinkeby Network
 
 * [Transaction ID](https://rinkeby.etherscan.io/tx/0xd958e9c92807703e8b1eaf015c9ddb39dd7aca4d3f15f53184bd66f06cacf0b6): `` 0xd958e9c92807703e8b1eaf015c9ddb39dd7aca4d3f15f53184bd66f06cacf0b6 ``
@@ -71,7 +81,6 @@ This repository containts an Ethereum DApp that demonstrates a generic Supply Ch
 * [Ethereum](https://www.ethereum.org/) - Ethereum is a decentralized platform that runs smart contracts.
 * [Truffle Framework](http://truffleframework.com/) - Truffle is a popular development framework for Ethereum.
 * [Truffle HD Wallet Provider](https://www.npmjs.com/package/truffle-hdwallet-provider) - Web3 provider for Metamask and Infura integration
-* [IPFS](https://ipfs.io/) - IPFS is the Distributed Web; a peer-to-peer hypermedia protocol. **(Not Used)**
 
 ## Versions
 
